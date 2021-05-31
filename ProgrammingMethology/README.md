@@ -207,3 +207,231 @@ According to solution 5000 -1000 = 4000
 
 - It transfers the control of program at the begining og the loop.
 - continue can only be used in loop.
+
+## Const Qualifier
+
+The qualifier const can be applied to the declaration of any variable to specify that **its value will not be changed.**
+
+- **_Pointer to Variable_**
+
+  ```C++
+  int *ptr;
+  ```
+
+The value of the pointer ptr as well as value of object ptr pointing to can be changed.
+
+- Poineter and value pointed by pointer both are stored in read-write area.
+
+```C++
+int i =15;
+int j =20;
+int *ptr = &i;
+printf("*ptr: %d\n",*ptr);
+ptr = &j;
+printf("*ptr: %d\n",*ptr);
+*ptr = 200;
+printf("*ptr: %d\n",*ptr);
+```
+
+Output:
+
+\*ptr: 15
+
+\*ptr: 20
+
+\*ptr: 200
+
+- **_Pointer To Constant_**
+
+```C++
+const int *ptr;
+    //or
+int const *ptr;
+```
+
+The pointer can be changed to point to any other integer variable, but cannot change value of object(entity) pointed using ptr.
+
+- Pointer is stored in read-write area.
+- Object pointed may be in read only or read-write area.
+
+```C
+int i =15;
+int j =20;
+const int *ptr = &i;
+printf("ptr: %d\n",*ptr);
+*ptr = 200;
+ptr = &j;
+printf("ptr: %d\n",*ptr);
+```
+
+**Otput:**
+
+error:assignment of read-only location '\*ptr'
+
+## String in C
+
+In C, a string can be refered either using a charecter pointer or as a charecter array.
+
+### 1. String as character arrays:
+
+```C
+char ptr[] = "string";
+```
+
+- Representation of string
+
+| char ptr[] = | s   | t   | r   | i   | n   | g   | \0  |
+| ------------ | --- | --- | --- | --- | --- | --- | --- |
+
+- \0 is a string terminator.
+- when string is declared as char arrays, it is stored like other type of arrays in C i.e.
+  - if ptr[] is an auto variable then string is stored in stack segment.
+  - if its global or static variable then stored in data segment.
+
+### 2. String Using Charecter Pointer
+
+Using chapointer sting can be stored in two ways.
+
+1. Read only string in a shared segment: When string value is directly assigned to a pointer.
+
+   ```C
+   char *ptr = "string";
+   ```
+
+2. Dynamically allocated in heap segment: String are stored like other dynamically allocated things in C.
+   ```C
+   char *ptr;
+   int length = 7;
+   ptr = (char*) malloc(sizeof(char)*length);
+   *(ptr+0) = 's';
+   *(ptr+1) = 't';
+   *(ptr+2) = 'r';
+   *(ptr+3) = 'i';
+   *(ptr+4) = 'n';
+   *(ptr+5) = 'g';
+   *(ptr+6) = '\0';
+   ```
+
+## Function
+
+A large program is divided into basic building blocks called function.
+
+- Function contains set of instructions enclosed by "{ }" which perform specific operation in a program.
+
+**Uses of function :**
+
+- reduce code redundancy.
+- easy to read.
+- Reusable
+
+**Three aspects of C function :**
+|Aspects|Syntax|
+|-------|------|
+|function definition|return_type func_name(arguments) {Body}|
+|function call| func_name(arguments);|
+|function declaration| return_type func_name(arguments);
+
+## Library Function
+
+- Only one value can be retirned from the function.
+- if you want to return more than one value pointers can be used to directly change the value address instead of value.
+- Library functions are declared in header files.
+- some Header files are
+
+| Header File | Description                                                   |
+| ----------- | ------------------------------------------------------------- |
+| stdio.h     | std i/o head file where i/o functions are declared            |
+| conio.h     | console i/o head file                                         |
+| string.h    | string related functions                                      |
+| stdlib.h    | all memory rleated and general functions are delclared in it. |
+| math.h      | math related function                                         |
+| time.h      | time and clock releted functions                              |
+| ctype.h     | all charecter handling function are defined                   |
+| signal.h    | signal handling functions are declared                        |
+| errno.h     | error handling functions                                      |
+| assert.h    | contains diagnostics function                                 |
+
+**Some Important Points :**
+
+- each c Program contains main function.
+- execution of c program starts in main function.
+- name of function is unique in C program.
+- C functions can be invoked any where within C program.
+- one function can be called within another function.
+- function may or may not take args.
+- function may or may not return.
+- C function can return only one value to the calling function.
+- there are two types of function
+  1. Library function
+  2. User defined function
+
+## Call By Value
+
+- in Call by value method, the value of the variable is passed to the function as prams.
+- The value of actual prams can not be modified by formal prams.
+- Different memory is allocated for both actual and formal prams.Because, value of actual prameter is copied to formal prameter.
+
+```C
+#include<stdio.h>
+//function declaration
+void swap(int x, int y);
+int main(){
+  int m =22, n =44;
+  //fuction call
+  swap(m,n);
+}
+//function definition
+void swap(int x, int y){
+  int temp = x;
+  x= y;
+  y=temp;
+  free(temp);
+}
+```
+
+Output:
+
+The values before swap a = 22 and b = 44
+
+The value after swap a = 22 and b = 44
+
+**Actual Prameter:** - This is the args used in function call.
+
+```C
+sum(3,4);
+```
+
+**Formal Prameter:**- This is the args used in function definition.
+
+```C
+void sum(int x,int y){x = x+y;}
+```
+
+## Call By Reference
+
+- In call by reference method, the address of the args are passed to the function.
+- the value of actual parameters can be modified by formal parameters.
+- Same Memory is used for both actual and formal parameters since only address is used by both prameters.
+
+```C
+#include<stdio.h>
+//function prototype
+void swap(int *a, int *b);
+
+int main(){
+  int m =22;
+  int n =44;
+  //calling function
+  swap(&m,&n);
+}
+void swap(int *a, int *b){
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+```
+
+Output:
+
+Before : : Value of m = 22 and n = 44
+After : : value of m =44 and n =22
