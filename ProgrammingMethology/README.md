@@ -433,5 +433,64 @@ void swap(int *a, int *b){
 
 Output:
 
-Before : : Value of m = 22 and n = 44
-After : : value of m =44 and n =22
+Before : Value of m = 22 and n = 44
+
+After : value of m =44 and n =22
+
+## Recursion
+
+Any function which calls itself is called recursion.
+
+- Recursion is a usefull technique borrowed from mathematics.
+- Recursice code are sorter and easier.
+
+Example: Factorial of any number
+
+n! = 1 if n==0
+
+n ! = n \* (n-1) ! if n>0
+
+```C
+int fact(int n){
+  if(n==0){
+    return 1;
+  }else if(n>0){
+    return (n*fact(n-1));
+  }
+}
+```
+
+### Recursive Algorithms TODO
+
+- Fibonacci Series, Factorial Finding
+- Merge Sort, Quick Sort
+- Binary Search tree
+- Tree Traversal and many tree problem
+  - in order
+  - pre order
+  - post order
+- Graph traversal
+  - DFS
+  - BFS
+- Dyanamic Programming
+- Divide and Conquer Algorithms
+- Tower of Hanoi
+- Backtracking algorithm
+
+## Backtracking
+
+Bqcktracking is the method of exhaustive search using divide and conquer.
+
+- Sometime the best algo for a prob is to try all possiblities.
+- It is a slow process.
+
+### Backtracking Algoriths TODO
+
+- Binary string
+- Generating k-ary String
+- The knapsack problem
+- Generalized String
+- Hamitonian cycle
+- Graph Coloring Problem
+
+## C scope Rules
