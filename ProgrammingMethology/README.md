@@ -494,3 +494,235 @@ Bqcktracking is the method of exhaustive search using divide and conquer.
 - Graph Coloring Problem
 
 ## C scope Rules
+
+A scope in a programming language is a region of the program where a defined variable can have its existance and beyond that, variable can not be accessed.
+
+### Local Variable
+
+Variable that are declared inside a function or block are called local variable.
+
+```C
+int main(){
+  int a,b,c;/*Loacal variable declaration*/
+}
+```
+
+### Global Variable
+
+Global variable are defined outside the function.
+
+- The global variable will hold memory throughout the program lifetime.
+
+- global variable is available throughout the program.
+
+```C
+#include<stdio.h>
+int g;//global variable
+int main(){
+  g =10;
+}
+```
+
+- A program can have same name for local and global variable but value of local variable inside a function takes preference.
+
+```C
+int g = 20;
+int main(){
+  int g = 10;
+  printf("g = %d",g);
+}
+```
+
+Output: g = 10
+
+### Block Scope
+
+A block is a set of stetments which is enclosed within { }.
+
+- A variable which is declared in ablock is accesible in the block and all inner block of that block, but no access to outside block.
+
+- if inner block declare a var of same name as of outer block then the availablily of outer block var is stoped for that inner block.
+
+```C
+int main(){
+  {
+    int a= 10,b=20,c=30;
+    {
+      a =20;
+      b=30;
+      int c =40;
+    }
+    printf("a = %d , b = %d and c = %d",a,b,c );
+  }
+}
+```
+
+- Here c = 30 because as we declare a var with same nae as of outer var than the availablity of outer var ends.
+  Output: a = 20 , b = 30 and c= 30
+
+### Formal Parameters
+
+Function parameters, which are known as formal parameters, are treated as local variable within that function and give preference over the global variable.
+
+```C
+#include<stdion.h>
+int a = 20;
+int main(){
+  printf("value of global a is %d",a);
+  int a = 10;
+  int b = 20;
+  int c = 0;
+  printf("value of a  in main() is %d" , a);
+  c = sum(a+b);
+  printf("value of c in main() = %d",c);
+}
+int sum(int a, int b){
+  printf("value of a in sum() is %d",a);
+  return a+b;
+}
+```
+
+Output:
+
+value of global a =20
+
+value of a in main() is 10
+
+value of a in sum() is 10
+
+value of c in main() is 30
+
+## Storage Class
+
+The storage class of a variable in C determines the lifetime of the variable if this is 'global' or 'local'.
+
+Storage class which can be used in C program
+
+- Auto
+- Register
+- static
+- Extern
+
+### Auto Storage Class
+
+A variable defined within a function or block with auto specifer belogs to automatic storage class.
+
+All variable defined within a function or block by default belong to automatic storage class.
+
+auto varible are automatically distroyed after program execution.
+
+#### Properties of auto storage class
+
+- default initial value is garbage.
+- visiblity of auto variable is within block.
+- auto variable get memory at run time.
+
+### Register Storage class
+
+You can use the register storage class when you want to store local variables within functions or blocks in CPU registers instead of RAM to have quick access to these variables. For example, "counters" are a good candidate to be stored in the register.
+
+#### Properties of register Storage Class
+
+- Register variable executes faster than the other variables becuse it is stored in CPU so during the execution compilrer has no extra burden to bring variable from memory to CPU.
+- Since CPU has limited number of registers so it is the responsiblity of programmer to use it resposibly.
+- most frequent variables are stored in register.
+- we can not dereference register variable as it is stored in CPU hence no memory address.
+- scope and visiblity of register variable is block.
+
+```C
+#include<stdio.h>
+int main(){
+  register int a =10;
+  int *ptr;
+  p = &a;
+  printf("%u",p);
+}
+```
+
+Output: Compilation error
+
+Here we are trying to refernce a register variable which gave a compilation error.
+
+### Static Storage class
+
+Unlike global variable static variables are not visible outside the block but it maintain their values between calls.
+
+when static specifier is applied to a local variable then the compiler creates a permanent storage for it.
+
+A static local variable is local variable is local variable that retains its value between function calls.
+
+#### Properties of Static Sorage Class
+
+- It is not default storage class for global variable.
+- Default initial value is 0 or null.
+- A static variable can be declared many time but initialized only once.
+- We can not write any assignment statement globally.
+- static variable initialize only one time in whole program.
+- if we declare static variable locally then it is visible within the block where it is declared.
+
+```C
+for(int i=0;i< 5;i++){
+  static int a =10;
+  print("%d\t",a);
+  a++;
+}
+```
+
+Output: 10 11 12 13 14
+
+### External Storage class
+
+The extern specifier gives the declared variable external storage class.
+
+When extern specifier is used with a variable declaration then no storage is allocated to that variable and it is assumed that the variable has already been defined elsewhere in program.
+
+When we use extern specifier the variable can not be initialized because with extern specifier varible is declared not defined.
+
+```C
+extern int  i = 10;
+int main(){
+ printf("%d",i);
+}
+```
+
+Output: 10
+
+- Here we initialized varible with extern keyword so it will not give any error
+
+```C
+int main(){
+  extern int i=10;
+}
+```
+
+Output: Compilation error. can not initialize extern variable.
+
+```C
+int main(){
+  extern int i;//declared
+  printf("%d",i);
+}
+extern int i =20;
+```
+
+Output: 20
+
+- Here we declare variable extern then it searches the variable either it has been initialized or not. it it has been initialized which may be either extern or static then its okay otherwise compilation error.
+
+## Precedence of Postfix(++) and (++)prefix in C/C++
+
+Precedence of prefix ++ (or prefix --) and derefernce(\*) operator is same.
+
+precedence of prefix is higher than postfix operator.
+
+```C
+int a =10;
+int b = a++;//10 then a = 11
+int c = ++a;// a=a+1 then 12
+```
+
+```C
+*p = arr;
+++*p;//*p = *p+1
+*p++;//*p = *(p+1)
+```
