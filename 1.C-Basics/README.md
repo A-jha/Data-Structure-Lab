@@ -2,14 +2,14 @@
 
 - step1 : change directory to root where your cpp files are present.
 
-  ```bash
-  cd <path of root directort>
+  ```
+  cd <path where c++ file exists>
   ```
 
 - stet2 : to compile the code
 
   ```bash
-  g++ test.pp -o filename
+  g++ test.c++ -o filename
   ```
 
   - it will generate an object file with name filename
@@ -17,7 +17,7 @@
 - step3 : To execute the code and look up the output
 
   ```bash
-  ./filename
+  ./path/filenae
   ```
 
 # Flowchart
