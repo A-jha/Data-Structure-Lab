@@ -4,7 +4,7 @@ Heroku@Avinash1997
 
 ## Class
 
-A class is a building block of OOP and it is a user fefined datatype which can hold
+A class is a building block of OOP and it is a user defined datatype which can hold
 
 - data member
 - member function
