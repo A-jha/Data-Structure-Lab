@@ -1,3 +1,45 @@
+## Dynamic List
+
+- store a given no of elements of a given datatype
+- Write / modify element at a position
+- Read element at a position
+
+```
+//Dynamic list can be implemented using array
++-----+----+-----+----+-----+----+-----+
+|  1  |  2 |   3 |  4 |     |    |     |
++-----+----+-----+----+-----+----+-----+
+```
+
+### Time Complexity
+
+- Access : Read / Write element at an index takes constant time **O(1)**
+- Insert : **O(n)**
+- Remove : **O(n)**
+- Add : **O(n)**
+
+### Cons
+
+- If the MAX_SIZE increases then we have to redifine a new array and copy all element from previous array.
+- Insertion takes O(n) time
+
+### Solution :
+
+- Implement the problem using linked list
+
+### Limitation of Array
+
+- Array is stored in a contiguous location in memory so extension of size is not possible.
+- When we declare an array then if size is small then we may need to extend it and if size is very large then we are wasting a lot of memory.
+
+```
+//int arr[4]={1,2,3,4};
++-----+----+-----+----+-+-+-+-+-+-+-+-+-+
+|  1  |  2 |   3 |  4 | | | | | | | | | |
++-----+----+-----+----+-+-+-+-+-+-+-+-+-+
+  100   104  108   112
+```
+
 # Arrays
 
 - A collection of items having same datatype stored in a contiguous memory location.
