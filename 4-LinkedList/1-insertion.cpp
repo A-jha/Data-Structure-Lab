@@ -36,8 +36,67 @@ void display()
     }
     cout << "\n";
 }
+/*=========Deletion of node===========*/
+//beginning
+void pop()
+{
+    //1. check if head is null then return
+    if (head == NULL)
+    {
+        cout << "List is empty"
+             << "\n";
+        return;
+    }
+    //2. make a temp variable to store  head
+    Node *temp = head;
+    //3. make head as next of head
+    head = temp->getNext();
+    //4.free temp
+    free(temp);
+}
 
+//end
+void pop_back()
+{
+    //1. check if head is null
+    if (head == NULL)
+    {
+        cout << "List is empty"
+             << "\n";
+        return;
+    }
+    //2.trverse till last node of list
+    Node *temp = head;
+    Node *secondLast = NULL;
+    while (temp->getNext() != NULL)
+    {
+        secondLast = temp;
+        temp = temp->getNext();
+    }
+    //3.set prev of last node as null
+    secondLast->setNext(NULL);
+    //4.free the memory of temp
+    free(temp);
+}
+
+//Delete node after given node
+void deleteAfter(Node *a)
+{
+    //1. check if a is null or not
+    if (a == NULL)
+    {
+        cout << "Given node is null";
+        return;
+    }
+    //traverse till last node
+    Node *temp = head;
+    Node *temp1 = NULL;
+    while (temp->getNext() == NULL)
+    {
+    }
+}
 /*=======Insertion in list============*/
+
 //insertion at begining is called push
 void push(int data)
 {
@@ -107,5 +166,8 @@ int main()
     append(6);
     append(5);
     insertAfter(head->getNext(), 100);
+    pop_back();
+    pop();
+    pop();
     display();
 }

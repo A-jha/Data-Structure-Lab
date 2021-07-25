@@ -138,3 +138,73 @@ void insertAfter(Node *prev, int data)
     prev->setNext(new_node);
 }
 ```
+
+## Deletion at Beginning(POP)
+
+> It is 4 Step Process
+
+1. Check if head is NULL
+2. Store head to a temp variable
+3. assign head as next of head
+4. free temp
+
+![delete-at-beginning](../images/delete1.png)
+
+```c++
+void pop()
+{
+    //1. check if head is null then return
+    if (head == NULL)
+    {
+        cout << "List is empty"
+             << "\n";
+        return;
+    }
+    //2. make a temp variable to store  head
+    Node *temp = head;
+    //3. make head as next of head
+    head = temp->getNext();
+    //4.free temp
+    free(temp);
+}
+```
+
+## Deletion at the end(pop_back)
+
+> It is a 4 step Process
+
+1. Check if head is NULL
+2. traverse till last node
+3. set next of second last elemnet as null
+4. free last element
+
+![delete-at-end](../images/delete2.png)
+
+```C++
+void pop_back()
+{
+    //1. check if head is null
+    if (head == NULL)
+    {
+        cout << "List is empty"
+             << "\n";
+        return;
+    }
+    //2.trverse till last node of list
+    Node *temp = head;
+    Node *secondLast = NULL;
+    while (temp->getNext() != NULL)
+    {
+        secondLast = temp;
+        temp = temp->getNext();
+    }
+    //3.set prev of last node as null
+    secondLast->setNext(NULL);
+    //4.free the memory of temp
+    free(temp);
+}
+```
+
+## Deletion after a node
+
+![delete-at-beginning](../images/delete3.png)
