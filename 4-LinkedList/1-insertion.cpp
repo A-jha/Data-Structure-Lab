@@ -52,6 +52,7 @@ void pop()
     //3. make head as next of head
     head = temp->getNext();
     //4.free temp
+    temp = NULL;
     free(temp);
 }
 
@@ -75,25 +76,48 @@ void pop_back()
     }
     //3.set prev of last node as null
     secondLast->setNext(NULL);
+
+    temp = NULL;
+    secondLast = NULL;
     //4.free the memory of temp
     free(temp);
+    free(secondLast);
 }
 
-//Delete node after given node
-void deleteAfter(Node *a)
+//Delete  given node
+void delNode(int a)
 {
-    //1. check if a is null or not
-    if (a == NULL)
+    if (head == NULL)
     {
-        cout << "Given node is null";
+        cout << "List is empty"
+             << "\n";
         return;
     }
-    //traverse till last node
     Node *temp = head;
-    Node *temp1 = NULL;
-    while (temp->getNext() == NULL)
+    if (a == 0)
     {
+        head = temp->getNext();
+        free(temp);
+        return;
     }
+
+    //find previous node of node to be deleted
+    for (int i = 0; temp != NULL && i < a - 1; i++)
+        temp = temp->getNext();
+
+    // If position is more than number of nodes
+    if (temp == NULL || temp->getNext() == NULL)
+        return;
+
+    // Node temp->next is the node to be deleted
+    // Store pointer to the next of node to be deleted
+    Node *next = temp->getNext()->getNext();
+
+    // Unlink the node from linked list
+    free(temp->getNext()); // Free memory
+
+    // Unlink the deleted node from list
+    temp->setNext(next);
 }
 /*=======Insertion in list============*/
 
@@ -160,14 +184,26 @@ int main()
     push(5);
     push(6);
     push(7);
+    push(71);
     push(8);
     append(8);
     append(7);
     append(6);
     append(5);
     insertAfter(head->getNext(), 100);
+    insertAfter(head->getNext(), 1100);
+    display();
+    cout << "\n";
     pop_back();
-    pop();
+    display();
+    cout << "\n";
     pop();
     display();
+    cout << "\n";
+    pop();
+    display();
+    cout << "\n";
+    delNode(2);
+    display();
+    cout << "\n";
 }

@@ -164,6 +164,8 @@ void pop()
     Node *temp = head;
     //3. make head as next of head
     head = temp->getNext();
+    //remove all pointer pointing to head
+    temp = NULL;
     //4.free temp
     free(temp);
 }
@@ -200,11 +202,39 @@ void pop_back()
     }
     //3.set prev of last node as null
     secondLast->setNext(NULL);
-    //4.free the memory of temp
+    //4. Remove all pointer pointing to head
+    temp = NULL;
+    secondLast = NULL;
+    //5.free the memory of temp
     free(temp);
+    free(secondLast);
 }
 ```
 
-## Deletion after a node
+## Deletion after a node or At a given position
 
 ![delete-at-beginning](../images/delete3.png)
+
+```C++
+int deleteNodeAt(int a)
+{
+    //declare a pointer variable to head
+    Node *temp = head;
+    //set a count varible to check position
+    int count = 0;
+    //traverse through list
+    while (temp != NULL)
+    {
+        count++;
+        if (count == a)
+        {
+            temp->setNext(temp->getNext()->getNext());
+            temp = NULL;
+            free(temp);
+            return count;
+        }
+        temp = temp->getNext();
+    }
+    return count;
+}
+```
