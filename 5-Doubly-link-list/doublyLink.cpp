@@ -154,7 +154,6 @@ void pop()
 int main()
 {
     push(4);
-
     display();
     pop();
     display();
