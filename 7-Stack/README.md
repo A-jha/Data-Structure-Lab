@@ -83,6 +83,7 @@ end
 
 - Evaluation of Arithmatic expressions.
 
+  - Infix
   - Postfix
   - Prefix
 
