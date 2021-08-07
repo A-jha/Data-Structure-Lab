@@ -44,7 +44,7 @@ Corresponding to each opening parentheses we should have a closing parentheses.
 [2+3(4 * 5)}] --> this is unbalnced
 ```
 
-## Infix, Postfix, Prefix
+## 4. Infix, Postfix, Prefix
 
 ### Infix
 
@@ -98,4 +98,106 @@ Eaxample:
 3 + 7
 
 10
+```
+
+In infix we have to follow mutilpe rules to parse and evaluate the data so to overcome these problems mathmaticians comes with some solutions i.e postfix evaluation and prefix evaluation.
+
+### Prefix (Polish Notation)
+
+> <operator\> <oprand\> <oprand\>
+
+| Infix      | Prefix |
+| ---------- | ------ |
+| a + b      | + a b  |
+| p - q      | - p q  |
+| a + b \* c | +a\*bc |
+
+## 5. Evaluation of Prefix
+
+```
+Infix : {(2 * 3) + (5 * 4)} -9
+
+     =>  (*23 + *54) -9
+
+     =>  +*23*54 - 9
+
+Postfix : -+*23*549
+
+1. Scan postfix expression from Right to left
+
+```
+
+### Postfix (Reverse Polish Notation)
+
+- Easiest to parse and most efficient
+
+> <oprand\> <operand\> <operator\>
+
+| Infix      | Post   |
+| ---------- | ------ |
+| a + b      | a b +  |
+| p - q      | p q -  |
+| a + b \* c | abc\*+ |
+
+## 6. Evaluation of Postfix
+
+```
+Infix: A * B - C * d - e
+
+{(A * b) - (c * d) }  -e
+
+{(AB*) - (CD*)} -e
+
+{AB*CD*-}-e
+
+Postfix : AB*CD-e-
+
+Noiw we have A = 2 B= 3 C = 5 D = 4 e = 9 evaluate postfix
+
+postfix : 23*54-9-
+
+1. Scan the expression from left to right
+   - for first operator the preceding two will be the operand
+      2 3 * then 2 and 3 are oprand for first operator * apply operator
+
+      Postfix : 654*-9- ( 2 3 * ---> 6)
+
+      Postfix : 620-9- (5 4 * ---> 20)
+
+      Postfix: -149- ( 6 20 - ---> -14)
+
+      Postfix: -23 ( -14 9 - ---> -23)
+```
+
+## 7. Infix To Postfix
+
+Step1 : Scan from Left to Right
+
+Step2: If Operrand comes then printit
+
+Step3: If lower predence operator comes then pop hiegher precedence oprator first
+if stack contains \* then + comes then \* will pop
+
+Step4: In the case of parenthesis for each opening parentheses if we encounter closing parentheses then we will pop operator until we get corresponding opening parentheses.
+
+```
+Example: ((A + B) * C - D) * E
+
+Step 1: Scan from Left to right
+Stack <---- (
+Stack <---- ( (
+Stack <---- ( (        Output: A
+Stack <---- ( ( +      Output: A
+Stack <---- ( ( +      Output: AB
+Stack <---- ( ( + )    Output: AB here we get closing
+Stack <---- (          Output: AB+
+Stack <---- ( *        Output: AB+
+Stack <---- ( *        Output: AB+C
+Stack <---- ( -      Output: AB+C* <--- if h-pop
+Stack <---- ( -      Output: AB+C*D
+Stack <---- ( - )    Output: AB+C*D here closing
+Stack <----            Output: AB+C*D-
+Stack <---- *          Output: AB+C*D-
+Stack <---- *          Output: AB+C*D-E
+Stack <----            Output: AB+C*D-E* <-- final
 ```
