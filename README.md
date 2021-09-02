@@ -158,7 +158,7 @@ postfix : 23*54-9-
 
 1. Scan the expression from left to right
    - for first operator the preceding two will be the operand
-      2 3 * then 2 and 3 are oprand for first operator * apply operator
+      2 3 * then 2 and 3 are operand for first operator * apply operator
 
       Postfix : 654*-9- ( 2 3 * ---> 6)
 
@@ -173,10 +173,12 @@ postfix : 23*54-9-
 
 Step1 : Scan from Left to Right
 
-Step2: If Operrand comes then printit
+Step2: If Operand comes then print it
 
-Step3: If lower predence operator comes then pop hiegher precedence oprator first
+Step3: If lower precedence operator comes then pop higher precedence operator first
 if stack contains \* then + comes then \* will pop
+
+- in case where precedence are equal then pop the previous operator too
 
 Step4: In the case of parenthesis for each opening parentheses if we encounter closing parentheses then we will pop operator until we get corresponding opening parentheses.
 
