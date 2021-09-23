@@ -39,7 +39,7 @@ struct Node
 | cost of insertion   | begining: O(n)<br>end : O(1)<br>n-th position:O(n) | begining : O(1) <br> end :O(n)<br> n-th position:O(n) |
 | Easy to Use         | Easy                                               | More Prone to error                                   |
 
-## Insertion At Begining
+## Insertion At Begining 😄
 
 > It is 4 Step process:
 
@@ -47,8 +47,6 @@ struct Node
 2.  Put in data in Node
 3.  Make next of new Node as head
 4.  Now assign new Node as head
-
-![insertion-at-begining](../images/llinsertion1.png)
 
 ```c++
 void push(int data)
@@ -73,8 +71,6 @@ void push(int data)
 3. Assign next as NULL for last element in list
 4. Check if list is empty then make new Node as head
 5. else traverse through the last node
-
-![insertion-at-end](../images/llinsertionend.png)
 
 ```c++
 void append(int data)
@@ -171,7 +167,7 @@ void pop()
 }
 ```
 
-## Deletion at the end(pop_back)
+## Deletion at the end(pop_back) 😢
 
 > It is a 4 step Process
 
@@ -211,7 +207,7 @@ void pop_back()
 }
 ```
 
-## Deletion after a node or At a given position
+## Deletion after a node or At a given position 🙄
 
 ![delete-at-beginning](../images/delete3.png)
 
@@ -238,3 +234,9 @@ int deleteNodeAt(int a)
     return count;
 }
 ```
+
+## Questions ❓
+
+1. Reverse a link list 🥌
+2. sort a link List 🩳
+3. count nodes in a List 🥥
