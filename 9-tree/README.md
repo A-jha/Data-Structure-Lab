@@ -76,3 +76,37 @@ sruct Node{
 ```
 
 - In node there are three fields and one is for data and other two is left subtree pointer and right subtree pointer.
+
+## Tree Traversal Inorder, Preorder, Postorder
+
+As we know tree is a linear data structure and hence we can not directly iterate over the data we have to follow certain convention such that user can understand the generated output.
+
+![tree](https://media.geeksforgeeks.org/wp-content/cdn-uploads/2009/06/tree12.gif)
+
+**Depth First Traversal**
+
+- Inoder (left, root, right)
+  ```
+  4 2 5 1 3
+  ```
+- Preorder ( root, left, right )
+
+  ```
+  1 2 4 5 3
+  ```
+
+- Postorder ( left, right, root)
+  ```
+  4 5 2 3 1
+  ```
+
+### Inorder Traversal
+
+- It gives binary search tree in non sorted order
+- first go to leftest leaf than parent of leftest leaf and then right of the parent of leftest leaf
+
+## Binary Search Tree
+
+A binary tree in which for each node, value of all the nodes in left subtree is lesser or equal than the value of nodes in right sub tree.
+
+![binary-tree](https://static.javatpoint.com/ds/images/binary-search-tree.png)

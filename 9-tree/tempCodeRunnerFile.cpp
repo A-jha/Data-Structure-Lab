@@ -56,7 +56,6 @@ void setRight(int key, Node *parent)
     parent->right = newNode;
 }
 
-// inorder means root in middle
 void inOrder(Node *root)
 {
     if (root == NULL)
@@ -69,29 +68,6 @@ void inOrder(Node *root)
     inOrder(root->right);
 }
 
-// preorder means root first
-void preOrder(Node *root)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-    cout << root->data << " ";
-    preOrder(root->left);
-    preOrder(root->right);
-}
-
-//postOrder means root in the end
-void postOrder(Node *root)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-    postOrder(root->left);
-    postOrder(root->right);
-    cout << root->data << " ";
-}
 int main()
 {
     setRoot(10);
@@ -104,15 +80,5 @@ int main()
     setLeft(70, root->right);
     setRight(80, root->right);
 
-    cout << "Inorder Result : ";
     inOrder(root);
-    cout << "\n";
-
-    cout << "Preorder Result : ";
-    preOrder(root);
-    cout << "\n";
-
-    cout << "Postorder Result : ";
-    postOrder(root);
-    cout << "\n";
 }
