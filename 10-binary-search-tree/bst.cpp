@@ -59,23 +59,25 @@ void postOrder(Node *root)
 }
 
 //5. find minimum element
-void minimum(Node *root)
+Node *minimum(Node *root)
 {
     while (root->left != NULL)
     {
         root = root->left;
     }
     cout << "minimum element in tree is " << root->data << "\n ";
+    return root;
 }
 
 //6. maximum element in tree
-void maximum(Node *root)
+Node *maximum(Node *root)
 {
     while (root->right != NULL)
     {
         root = root->right;
     }
     cout << "Maximum element is tree is " << root->data << "\n";
+    return root;
 }
 
 //7. insert a node at it right position
@@ -121,4 +123,56 @@ bool search(Node *root, int key)
         return true;
     }
     return false;
+}
+
+Node *removeNode(Node *root, int key)
+{
+    Node *temp;
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    else if (key < root->data)
+    {
+        root->left = removeNode(root->left, key);
+    }
+    else if (key > root->data)
+    {
+        root->right = removeNode(root->right, key);
+    }
+    else if (root->left && root->right)
+    {
+        temp = minimum(root->right);
+        root->data = temp->data;
+        root->right = removeNode(root->right, root->data);
+    }
+    else
+    {
+        temp = root;
+        if (root->left == NULL)
+        {
+            root = root->right;
+        }
+        else if (root->right == NULL)
+        {
+            root = root->left;
+        }
+        delete (temp);
+    }
+    return root;
+}
+
+int main()
+{
+    Node *root = createNode(10);
+    insertNode(root, 20);
+    insertNode(root, 30);
+    insertNode(root, 5);
+    insertNode(root, 2);
+    insertNode(root, 6);
+
+    // removeNode(root, 5);
+    inOrder(root);
+    cout << "\n";
+    postOrder(root);
 }
