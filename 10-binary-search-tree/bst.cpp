@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 //create a node
@@ -162,6 +163,66 @@ Node *removeNode(Node *root, int key)
     return root;
 }
 
+//For a given node max height of the subtree in left
+// and right plus 1 will be the height of the tree
+int findHeight(Node *root)
+{
+    if (root == NULL)
+    {
+        return -1; //if height is counted as no of edges leaf's height = 0
+                   // return 0;  //if height is counted as no of node leaf's height = 1
+    }
+    int leftHeight = findHeight(root->left);
+    int rightHeight = findHeight(root->right);
+
+    return max(leftHeight, rightHeight) + 1;
+}
+
+// Level Order traversal
+void levelOrder(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    //1. create a queue and enqueue the root
+    queue<Node *> Q;
+
+    //to store front element
+    Node *current;
+
+    //Enqueue root and NULL Node
+    Q.push(root);
+    Q.push(NULL);
+
+    while (Q.size() > 1)
+    {
+        current = Q.front();
+        Q.pop();
+
+        //condition to check next level occurrence
+        if (current == NULL)
+        {
+            Q.push(NULL);
+            cout << "\n";
+        }
+        else
+        {
+            //push left child of the current node
+            if (current->left)
+            {
+                Q.push(current->left);
+            }
+
+            //push right child of current node
+            if (current->right)
+            {
+                Q.push(current->right);
+            }
+            cout << current->data << " ";
+        }
+    }
+}
 int main()
 {
     Node *root = createNode(10);
@@ -175,4 +236,6 @@ int main()
     inOrder(root);
     cout << "\n";
     postOrder(root);
+    cout << "height of tree is : " << findHeight(root) << "\n";
+    levelOrder(root);
 }

@@ -66,4 +66,49 @@ Insert(root, key):
 5. repeat step 3 or 4 until you find the right position
 ```
 
-### Deletion Algorithm
+## Memory Management
+
+- Heap (40%) : Heap is a dynamic Memory, Size of all other memory segment is fixed but heap can grow at run time . It call perform allocation and de-allocation of memory during runtime.
+
+- Stack(30%) : Function call variable are stored in stack during function call
+
+- Static / Global( 10%)
+
+- Code/text (20%)
+
+👍 **NULL is a macro for address 0**
+
+### 🤪 Important Terms
+
+1. Height of a Node : Number of edges in longest path from the node to a leaf node.
+
+2. Height of a tree :Height of root node
+
+   ▶️ height of a tree with 1 node is 0
+
+3. Depth of a node : No of edges in path from root to that node
+
+## Tree Traversal Algorithm
+
+Process od visiting each node in the tree exactly once on some order.
+
+There are mainly two category of algorithms :
+
+<img src="https://static.javatpoint.com/ds/images/binary-search-tree.png" width="200">
+
+1. Breadth First
+
+   - Level-order traversal
+
+   for the given tree it will print
+
+   > 30 15 60 7 22 45 75 17 27
+
+   Logic:
+
+   - Enqueue root and while dequeuing root enqueue all of roots child and this process go on
+
+2. Depth First
+   - Preorder (Root--Left--Right)
+   - postOrder (Left--Right--Root)
+   - inOrder (Left--Root--Right)
