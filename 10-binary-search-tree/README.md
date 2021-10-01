@@ -112,3 +112,31 @@ There are mainly two category of algorithms :
    - Preorder (Root--Left--Right)
    - postOrder (Left--Right--Root)
    - inOrder (Left--Root--Right)
+
+## Deletion in binary tree
+
+- Deletion is simple if we delete leaf node.
+
+- Other wise there may be three cases
+
+  1.  if the element to be deleted is a leaf node
+      ```
+      - To delete leaf node
+      Find the leaf node and replace the root that is pointing to leaf got null
+      ```
+  2.  if element to be deleted has one child
+
+      ```
+      - To delete node with one child
+      Replace the child of the node to be deleted as the child of the root of the node whose child is to be deleted
+
+      ```
+
+  3.  if the element to be deleted has both children
+
+      ```
+      - Delete the node having two child
+      Find the max left child of the node to be deleted and replace that node with the node to be deleted
+
+      and delete the maximum node found
+      ```
