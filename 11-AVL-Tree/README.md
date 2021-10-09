@@ -57,4 +57,4 @@ There are four types of rotations
 
 > 5 7 19 12 10 15 18 20 25 23
 
-<img src="./AVL.drawio.svg" alt="svg" align="center" style='background:grey'>
+<img src="./AVL.drawio.svg" alt="svg" align="center">
