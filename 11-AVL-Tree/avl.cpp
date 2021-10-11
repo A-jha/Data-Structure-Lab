@@ -7,8 +7,8 @@ using namespace std;
 struct Node
 {
     int data;
-    struct avl *left;
-    struct avl *right;
+    struct Node *left;
+    struct Node *right;
 };
 //create  a global root such that we can use it anywhere
 struct Node *root;
@@ -32,9 +32,9 @@ public:
     //7. define function to balance the tree
     Node *balance(Node *);
     // 8. insert new node to tree
-    Node *insert(Node *);
+    Node *insert(Node *, int);
     //9. show avl tree
-    void show(Node *);
+    void show(Node *, int);
     //10. inorder traversal
     // void inorder(Node *);
     // //11. preorder traversal
@@ -61,7 +61,7 @@ int AvlTree::height(Node *t)
     return h;
 }
 
-Node *AvlTree::difference(Node *t)
+int AvlTree::difference(Node *t)
 {
     int leftHeight = height(t->left);
     int rightHeight = height(t->right);
@@ -109,7 +109,7 @@ Node *AvlTree::balance(Node *t)
     int balanceFactor = difference(t);
     if (balanceFactor > 1)
     {
-        if (difference(t->l) > 0)
+        if (difference(t->left) > 0)
         {
             t = llRotation(t);
         }
@@ -165,7 +165,7 @@ void AvlTree::show(Node *p, int l)
         if (p == root)
         {
             cout << " <-Root-> ";
-            for (int i = 0; i < l && p != r; i++)
+            for (int i = 0; i < l && p != root; i++)
             {
                 cout << " ";
                 cout << p->data;
