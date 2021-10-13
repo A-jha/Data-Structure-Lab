@@ -1,4 +1,15 @@
-# Topics
+# Heap Sort
+
+| Time Complexity  |            |
+| ---------------- | ---------- |
+| Best             | O(n log n) |
+| Worst            | O(n log n) |
+| Average          | O(n log n) |
+| Space Complexity | O(1)       |
+
+- It is not an stable algorithm
+
+## Topics
 
 1. Array representation of Binary tree
 2. Complete Binary tree
@@ -14,8 +25,8 @@ A tree can be represented using array.
 
 - If root index is i then
 
-  - left child index will be `i*2`
-  - right child index will be `i*2 +1`
+  - left child index will be `i*2 +1`
+  - right child index will be `i*2 +2`
 
 - if any node index is i then you can reach to root by `floor(i/2)`
 
