@@ -17,7 +17,9 @@
 - step3 : To execute the code and look up the output
 
   ```bash
-  ./path/filenae
+  ./path/filename
   ```
 
-# Flowchart
+# File Handling
+
+- File handling is pretty great concept
