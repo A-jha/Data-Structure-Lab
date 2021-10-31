@@ -93,3 +93,68 @@ then,
 ```
 
 6. **Path :** A sequence of vertices where each adjacent pair is connected by an edge.
+
+   <A, B, F, H>
+
+7. **Simple Path :** A path in which no vertices (and thus no edges) are repeated.
+
+   - <A, B, F, H> <--- Simple Path
+
+   - <A, B, F, H, A, B> <---Here Vertices are repeated so not a simple path
+
+8. **Trail :** A walk in which no edges are repeated.
+
+   **Note:** We Will Generally Focus on Simple Path while dealing with graph.
+
+9. **Strongly Connected Graph :** If there is a path from any vertex to any other vertex.
+
+   - If We have vertex A, B, C then there must be a path such that we can go from A--->B, A--->C, B---> C and so on.
+
+   ![img](https://www.researchgate.net/profile/Luigi-Laura/publication/262250795/figure/fig4/AS:668857060569112@1536479358912/a-A-strongly-connected-graph-G-V-E-b-Edge-5-2-is-not-a-strong-bridge-while.png)
+
+   - In Undirected Graph There is no term strongly connected because direction is not specified.
+
+10. **Cycle :** Starts and Ends at same Vertex in a graph then it is called a cycle. In cycle no vertices will be repeated.
+
+11. **Close Walk :** Start and End at same Vertices.
+
+12. **Acyclic Graph :** A graph with no cycle.
+    - A tree is an Acyclic Graph.
+
+## Representation Of Graph
+
+There are two Very famous way to Represent Graph
+
+1. Adjacency Matrix
+2. Adjacency List
+
+### Adjacency Matrix
+
+It is a 2D array of size `V x V` where V is No of Vertices in a Graph. If the Name of Matrix is adj[][] then adj[i][j] = 1 indicates an edge from vertex i to j.
+
+- Adjacency Matrix for Undirected Graph is always Symmetric.
+
+- For a weighted Graph the value of each a[i][j] = w
+
+![adjMatrix](./adjmatrix.jpg)
+
+**Pros :**
+
+- Easier To implement
+- Deletion of edge takes O(1) time
+
+**Cons :**
+
+- It Consumes more Space
+- Most of the matrix are Sparse Matrix
+- space Complexity is O(V<sup>2</sup>)
+
+### Adjacency List
+
+In This case An Array of List is Used. The size of array is equal to the number of vertices. Let the array be an array[]. An entry array[i] represents the list of vertices adjacent to the ith vertex.
+
+This representation can be used to represent weighted graph.
+
+The weight of edge can be represented as list of pairs.
+
+![adjList](./adjlist.jpg)
