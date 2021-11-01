@@ -26,7 +26,7 @@ G = (V, E)
 - Directed Edge : In this case direction if predefined
 - Undirected Edge : In this cas direction is not given
 
-![Basic](./basic1.svg)
+![Basic](./img/basic1.svg)
 
 ## Types of Graph
 
@@ -35,7 +35,7 @@ G = (V, E)
 1. Directed Graph/ Digraph
 2. Undirected Graph
 
-![types](./types.svg)
+![types](./img/types.svg)
 
 ## Simple Application Of Graph
 
@@ -136,7 +136,7 @@ It is a 2D array of size `V x V` where V is No of Vertices in a Graph. If the Na
 
 - For a weighted Graph the value of each a[i][j] = w
 
-![adjMatrix](./adjmatrix.jpg)
+![adjMatrix](./img/adjmatrix.jpg)
 
 **Pros :**
 
@@ -157,4 +157,16 @@ This representation can be used to represent weighted graph.
 
 The weight of edge can be represented as list of pairs.
 
-![adjList](./adjlist.jpg)
+![adjList](./img/adjlist.jpg)
+
+## Implementation Of Graph
+
+1. Adjacency Matrix
+
+2. Adjacency List
+
+3. All Adjacent Node Of Of given Vertices
+
+4. DFS Traversal
+
+5. BFS Traversal
