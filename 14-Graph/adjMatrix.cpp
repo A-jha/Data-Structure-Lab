@@ -1,42 +1,59 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-// A function to add edge to the undirected Graph
-void addEdge(vector<int> adj[], int u, int v)
+// if there is an edge then true else false
+bool adjMatrix[10][10];
+
+// function to initialize the adjacency matrix as false
+// initially there is no node
+void init()
 {
-    adj[u].push_back(v);
-    adj[v].push_back(u);
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            adjMatrix[i][j] = false;
+        }
+    }
 }
 
-// Function to print the graph
-void printGraph(vector<int> adj[], int V)
+// function to know if there is an edge between two nodes
+bool isEdge(int startNode, int endNode)
 {
-    for (int v = 0; v < V; ++v)
+    if (adjMatrix[startNode][endNode])
     {
-        cout << "\n Adjacency List of Vertex " << v << "\n head";
-        for (auto x : adj[v])
-        {
-            cout << "-> " << x;
-        }
-        cout << "\n";
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 int main()
 {
-    // 5 vertex
-    int V = 5;
+    int startNode, endNode, numOfNodes, numOfEdges;
+    // since there is no node
+    init();
 
-    vector<int> adj[V];
+    // take input as number of nodes
+    cout << "Enter Total Num of Edges\n";
+    cin >> numOfNodes;
 
-    addEdge(adj, 0, 1);
-    addEdge(adj, 0, 4);
-    addEdge(adj, 1, 2);
-    addEdge(adj, 1, 3);
-    addEdge(adj, 1, 4);
-    addEdge(adj, 2, 3);
-    addEdge(adj, 3, 4);
-    printGraph(adj, V);
+    // take input as number of Edges
+    cout << "Enter Total Num of Edges\n";
+    cin >> numOfEdges;
 
-    return 0;
+    // Now Mark start Node and End Node In Adjacency Matrix
+    for (int i = 0; i < numOfEdges; i++)
+    {
+        cout << "Please Enter " << i + 1 << "th edge\n";
+        cout << "Enter Start Node: ";
+        cin >> startNode;
+        cout << "Enter End Node: ";
+        cin >> endNode;
+        adjMatrix[startNode][endNode] = true;
+    }
+
+    cout << "\n"
+         << isEdge(3, 4) << "\n";
 }

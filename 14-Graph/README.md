@@ -170,3 +170,5 @@ The weight of edge can be represented as list of pairs.
 4. DFS Traversal
 
 5. BFS Traversal
+
+## Depth First Search
