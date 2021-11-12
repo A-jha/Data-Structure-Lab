@@ -2,8 +2,8 @@
 
 ## How it is better than simple array
 
-- it knows iot's size
-- Array class has no rist of pointer decay
+- it knows it's size
+- Array class has no risk of pointer decay
 - Array class are more efficient than normal array
 
 ```c++
